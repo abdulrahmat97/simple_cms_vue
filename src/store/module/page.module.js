@@ -48,7 +48,7 @@ export default{
     actions:{
         fetchPageA: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.get(API_URL,payload)
+                axios.get(API_URL + 'pages/1')
                 .then(res => {
                     resolve(res)
                     commit('setPageA',res.data)
@@ -61,7 +61,7 @@ export default{
 
         fetchPageB: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.get(API_URL,payload)
+                axios.get(API_URL+ 'pages/2')
                 .then(res => {
                     resolve(res)
                     commit('setPageB',res.data)
@@ -74,7 +74,7 @@ export default{
 
         fetchPageC: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.get(API_URL,payload)
+                axios.get(API_URL + 'pages/3')
                 .then(res => {
                     resolve(res)
                     commit('setPageC',res.data)
@@ -87,7 +87,7 @@ export default{
 
         fetchPageD: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.get(API_URL,payload)
+                axios.get(API_URL + 'pages/4')
                 .then(res => {
                     resolve(res)
                     commit('setPageD',res.data)

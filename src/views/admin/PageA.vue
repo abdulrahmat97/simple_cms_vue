@@ -7,6 +7,8 @@
 <script>
 import Page from '@/components/Page.vue'
 
+import { mapGetters } from 'vuex';
+
 export default {
     data(){
         return{
@@ -14,8 +16,19 @@ export default {
             'title':'Page Action'
         }
     },
+
     components:{
         Page : Page
+    },
+
+    created(){
+        this.$store.dispatch('')
+    },
+
+    computed:{
+        ...mapGetters([
+            'getPageA'
+        ]),
     }
 }
 </script>
