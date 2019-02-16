@@ -27,7 +27,7 @@ export default{
         }
     },
 
-    mutation:{
+    mutations:{
         setPageA: (state,data) => {
             state.page_a = data
         },
@@ -45,7 +45,7 @@ export default{
         }
     },
 
-    action:{
+    actions:{
         fetchPageA: ({commit},payload) => {
             return new Promise((resolve, reject) => {
                 axios.get(API_URL,payload)

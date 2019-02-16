@@ -1,3 +1,4 @@
+
 export default function(Vue){
     let authenticatedUser = {}
   
@@ -54,6 +55,6 @@ export default function(Vue){
         }
       }
     })
-  }
+}
   
   

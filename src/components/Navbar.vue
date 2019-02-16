@@ -59,6 +59,8 @@
         app>
             <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Admin</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn flat color="error" @click="logout">Logout</v-btn>
         </v-toolbar>
         <slot name="content"></slot>
     </div>
@@ -66,6 +68,7 @@
 </template>
 
 <script>
+
 export default {
     data(){
         return{
@@ -78,6 +81,13 @@ export default {
             ]
         }
     },
+
+    methods:{
+        logout(){
+            this.$auth.destroyToken()
+            location.reload(true)
+        }
+    }
 }
 </script>
 

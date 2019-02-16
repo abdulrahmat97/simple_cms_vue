@@ -28,7 +28,7 @@ const router = new Router({
       path: '/admin',
       name: 'admin',
       meta:{
-        // forAuth:true
+        forAuth:true
       },
       
       component: () => import('@/views/admin/Admin.vue'),
@@ -68,7 +68,7 @@ router.beforeEach(
     if(to.matched.some(record => record.meta.forVisitors)){
       if(Vue.auth.isAuthenticated()){
         next({
-          path: '/admin/home'
+          path: '/admin/'
         })
       }else next()
     }else if(to.matched.some(record => record.meta.forAuth)){

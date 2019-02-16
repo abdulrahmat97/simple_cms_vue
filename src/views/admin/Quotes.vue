@@ -4,7 +4,7 @@
             </v-card-title>
                 <v-btn round color="primary" dark @click="addQuote">Add Quote</v-btn>
                 <br>
-                <data-tabel :headers="headers" :items="items" :dialog.sync="dialog" :title="title">
+                <data-tabel :headers="headers" :items="getQuotes" :dialog.sync="dialog" :title="title">
                     <template slot="form">
                         <v-textarea
                         outline
@@ -17,10 +17,10 @@
                         <v-btn color="blue darken-1" flat @click="saveQuote(statSave)">Save</v-btn>
                     </template>        
                     <template slot="field" slot-scope="props">
-                            <td class="text-md-left">{{ props.props.item.name }}</td>
+                            <td class="text-md-left">{{ props.props.item.quotes }}</td>
                             <td>
                             <v-tooltip left>
-                                <v-btn fab dark small color="cyan" slot="activator" @click="editQuote(props.props.item)">
+                                <v-btn fab dark small color="cyan" slot="activator" @click="editQuotes(props.props.item)">
                                     <v-icon small dark>edit</v-icon>
                                 </v-btn>
                                 <span>Edit</span>
@@ -51,50 +51,17 @@ export default {
                 { text: 'Quote', value: 'name', align:'left' },
                 { text: 'Action', value: 'calories', align:'left' },
             ],
-            'items':[
-                 {
-                    name: 'Frozen Yogurt',
-                    calories: 159,
-                },
-                {
-                    name: 'Ice cream sandwich',
-                    calories: 237,
-                    
-                },
-                {
-                    name: 'Eclair',
-                    calories: 262,
-                    
-                },
-                {
-                    name: 'Cupcake',
-                    calories: 305,
-                    
-                },
-                {
-                    name: 'Gingerbread',
-                    calories: 356,
-                    
-                },
-                {
-                    name: 'Jelly bean',
-                    calories: 375,
-                    
-                },
-                {
-                    name: 'Lollipop',
-                    calories: 392,
-                    
-                },
-            ],
-
             'quote':'',
-            statSave:''
+            statSave:'',
+            idQuote: -1
         }
     },
 
     created(){
-        this.$store.dispatch('fetchQuotes')
+      this.$store.dispatch('fetchQuotes')
+    },
+
+    mounted(){
     },
 
     computed:{
@@ -109,7 +76,7 @@ export default {
 
     methods:{
         addQuote(){
-            this.dialog =gitrue
+            this.dialog =true
             this.title = 'Add Quote'
             this.statSave='add'
         },
@@ -121,30 +88,54 @@ export default {
                     this.dialog=false
                     Swal.fire(
                     'Data',
-                    'Berhasil Diinput',
+                    'Success Add New Data',
                     'success')
+
+                    this.$store.dispatch('fetchQuotes')
                 })
                 .catch(ex => {
                     Swal.fire(
                     'Data',
-                    'Data gagal Diinput',
+                    'Data Failed to Add New',
                     'error')
                 })
             }else if(this.statSave == 'edit'){
-                this.$store.dispatch('updateQuote',this.items)
+                let data = {
+                    id: this.idQuote,
+                    quotes: this.quote
+                }
+                this.$store.dispatch('updateQuote',data)
+                .then(res => {
+                    this.dialog=false
+                    Swal.fire(
+                    'Data',
+                    'Data is Updated',
+                    'success')
+                    this.$store.dispatch('fetchQuotes')
+                })
+                .catch(ex => {
+                    Swal.fire(
+                    'Data',
+                    'Failed to Update Data',
+                    'error')
+                })
+                
             }
             
         },
-
-        editQuote(val){
-            this.$store.dispatch('fetchQuote')
+        
+        editQuotes(val){
+            this.$store.dispatch('fetchQuote',val.id)
             .then(res => {
-                this.quote = val.quote
+                this.quote = res.data.data.quotes
                 this.statSave='edit'
+                this.idQuote = res.data.data.id
+                console.log(res.data.data.quotes)
             })
             .catch(ex => {
                 console.log(ex.data)
             })
+            this.dialog=true
         },
         
         delQuote(val){
@@ -165,7 +156,8 @@ export default {
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            // this.getBarang.splice(this.getBarang.indexOf(val),1)
+                            this.$store.dispatch('fetchQuotes')
+                            this.getQuotes.splice(this.getQuotes.indexOf(val),1)
                         })
                         .catch(ex =>{
                             Swal.fire(
@@ -173,6 +165,7 @@ export default {
                                 'Delete Failed',
                                 'error'
                             )
+                            console.log(ex)
                         })
                     }
                 })

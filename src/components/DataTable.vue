@@ -20,7 +20,6 @@
                     </v-layout>
                 </v-container>
             </v-card-text>
-
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <slot name="button"></slot>

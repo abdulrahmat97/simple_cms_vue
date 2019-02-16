@@ -12,17 +12,17 @@ export default{
         }
     },
 
-    mutation:{
+    mutations:{
         setQuote: (state,data) => {
             state.quotes = data
         }
     },
 
-    action:{
+    actions:{
         inputQuotes: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.post(API_URL,{
-                    payload
+                axios.post(API_URL + `quotes`,{
+                    quotes : payload
                 })
                 .then(res=>{
                     resolve(res)
@@ -35,7 +35,7 @@ export default{
 
         fetchQuotes: ({commit}) => {
             return new Promise((resolve, reject) => {
-                axios.get(API_URL)
+                axios.get(API_URL+'quotes')
                 .then(res =>{
                     resolve(res)
                     commit('setQuote',res.data)
@@ -48,7 +48,7 @@ export default{
 
         fetchQuote: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.get(API_URL,payload)
+                axios.get(API_URL+`quotes/${payload}`)
                 .then(res => {
                     resolve(res)
                 })
@@ -60,7 +60,8 @@ export default{
 
         updateQuote: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.put(API_URL,payload)
+                axios.put(API_URL + `quotes/${payload.id}`,{
+                    quotes: payload.quotes})
                 .then(res => {
                     resolve(res)
                 })
@@ -72,7 +73,7 @@ export default{
 
         deleteQuote: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-              axios.delete(API_URL,payload)
+              axios.delete(API_URL + `quotes/${payload}`)
               .then(res => {
                   resolve(res)
               })
