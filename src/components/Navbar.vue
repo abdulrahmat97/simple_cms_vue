@@ -42,7 +42,7 @@
                     </v-list-tile>
                 </v-list-group>
 
-                <v-list-tile>
+                <v-list-tile to="/admin/settings">
                 <v-list-tile-action>
                     <v-icon>settings</v-icon>
                 </v-list-tile-action>

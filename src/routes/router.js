@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(Router)
 
@@ -11,10 +11,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      // component: Home
-      meta: {
-        forVisitors: true
-      }
+      component: Home,
     },
     {
       path:'/admin/login',
@@ -58,6 +55,11 @@ const router = new Router({
           name:'page-daily',
           component: () => import('@/views/admin/PageD.vue')
         },
+        {
+          path:'settings',
+          name:'settings',
+          component: () => import('@/views/admin/Settings.vue')
+        }
       ]
     }
   ]

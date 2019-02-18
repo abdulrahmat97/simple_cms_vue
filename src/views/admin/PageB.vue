@@ -1,21 +1,28 @@
 <template>
     <div>
-        <page :title="title" :content="content">
+        <page :title="getPageB.nama" :content="getPageB.content" :page="2">
         </page>         
     </div>
 </template>
 <script>
 import Page from '@/components/Page.vue'
 
+import { mapGetters } from 'vuex';
+
 export default {
-    data(){
-        return{
-            'content':'Laudantium eligendi ut tenetur nesciunt labore qui.',
-            'title':'Page Brand'
-        }
-    },
+    
     components:{
         Page : Page
+    },
+
+    created(){
+        this.$store.dispatch('fetchPageB')
+    },
+
+    computed:{
+        ...mapGetters([
+            'getPageB'
+        ]),
     }
 }
 </script>

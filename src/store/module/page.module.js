@@ -100,7 +100,9 @@ export default{
 
         updatePage: ({commit},payload) => {
             return new Promise((resolve, reject) => {
-                axios.put(API_URL,payload)
+                axios.put(API_URL + `pages/${payload.id}`,{
+                    content : payload.content
+                })
                 .then(res => {
                     resolve(res)
                 })

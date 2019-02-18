@@ -1,5 +1,5 @@
 <template>
-        <v-card>
+        <v-card m12 md12 lg12 lx12>
             <v-card-title><span class="title font-weight-bold">Quotes</span>
             </v-card-title>
                 <v-btn round color="primary" dark @click="addQuote">Add Quote</v-btn>
@@ -18,6 +18,7 @@
                     </template>        
                     <template slot="field" slot-scope="props">
                             <td class="text-md-left">{{ props.props.item.quotes }}</td>
+                            <td class="text-md-left">{{ props.props.item.created_at }}</td>
                             <td>
                             <v-tooltip left>
                                 <v-btn fab dark small color="cyan" slot="activator" @click="editQuotes(props.props.item)">
@@ -48,12 +49,13 @@ export default {
             'dialog': false,
             'title':'',
             'headers':[
-                { text: 'Quote', value: 'name', align:'left' },
-                { text: 'Action', value: 'calories', align:'left' },
+                { text: 'Quote', value: 'quotes', align:'left' },
+                { text: 'Created at', value: 'created_at', align:'left' },
+                { text: 'Action', value: '', align:'left' },
             ],
             'quote':'',
             statSave:'',
-            idQuote: -1
+            idQuote: -1,
         }
     },
 
@@ -79,6 +81,7 @@ export default {
             this.dialog =true
             this.title = 'Add Quote'
             this.statSave='add'
+            this.quote=''
         },
 
         saveQuote(val){
