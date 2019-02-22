@@ -57,6 +57,15 @@ const router = new Router({
       component: () => import('@/views/admin/Admin.vue'),
       children:[
         {
+            path:'',
+            component: () => import('@/views/admin/Dashboard.vue'),
+        },
+        {
+            path:'dashboard',
+            name:'dashboard',
+            component: () => import('@/views/admin/Dashboard.vue'),
+        },
+        {
           path:'quotes',
           name:'quotes',
           component: () => import('@/views/admin/Quotes.vue'),

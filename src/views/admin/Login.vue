@@ -57,7 +57,7 @@ export default {
   },
 
   created(){
-    axios.get('http://127.0.0.1:8000/api/secretkeys')
+    axios.get('http://satriaharis.com/webservice/api/secretkeys')
     .then(res => {
       this.key = res.data.data.secret
     })
@@ -77,13 +77,13 @@ export default {
         password : this.password
       }
 
-      axios.post('http://127.0.0.1:8000/oauth/token', data)
+      axios.post('http://satriaharis.com/webservice/oauth/token', data)
       .then(res => {
         this.$auth.setToken(res.data.access_token,res.data.expires_in + Date.now())
         this.$router.push("/admin/")
         this.alert=false
         this.loading = false
-        console.log(res.data)
+        // console.log(res.data)
         // location.reload(true)
       })
       .catch(ex => {

@@ -3,8 +3,9 @@
         <v-card-title><span class="title font-weight-bold">{{title}}</span></v-card-title>
         <v-card-text>
             <v-form>
-             <vue-editor v-model="content" :disabled="contentStat"></vue-editor>
-            </v-form>   
+             <vue-editor v-model="content" :disabled="contentStat"
+             :editorToolbar="customToolbar"></vue-editor>
+            </v-form> 
         </v-card-text>
         <v-spacer></v-spacer>
         <v-card-actions>
@@ -26,13 +27,16 @@ export default {
 
             'editStat':false,
             'saveStat':true,
-            'contentStat':true
+            'contentStat':true,
+            customToolbar: [
+            ['bold', 'italic', 'underline'],
+            ]     
         }
-    },
+    },              
 
     props:['content','title','page'],
     components:{
-        VueEditor
+        VueEditor,
     },
     methods:{
         edit(){

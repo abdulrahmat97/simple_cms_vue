@@ -133,10 +133,10 @@ export default {
                 this.quote = res.data.data.quotes
                 this.statSave='edit'
                 this.idQuote = res.data.data.id
-                console.log(res.data.data.quotes)
+                // console.log(res.data.data.quotes)
             })
             .catch(ex => {
-                console.log(ex.data)
+                // console.log(ex.data)
             })
             this.dialog=true
         },
@@ -168,7 +168,7 @@ export default {
                                 'Delete Failed',
                                 'error'
                             )
-                            console.log(ex)
+                            // console.log(ex)
                         })
                     }
                 })

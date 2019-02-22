@@ -2,7 +2,7 @@
   <v-toolbar dark color="#013777">
     <router-link to="/" style="color:white">
     <v-toolbar-title class="headline font-weight-black font-italic">
-        Header
+        Satria Haris
     </v-toolbar-title>
   </router-link>
     <v-spacer></v-spacer>

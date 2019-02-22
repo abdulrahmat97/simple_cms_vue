@@ -9,7 +9,9 @@
         <v-img src="static/images/pageC.png"></v-img>
         <v-card color="#013777" dark height="50px">
           <v-layout align-center justify-center fill-height margin="20px">
-            <h2>www.satriaharis.com</h2>
+            <router-link to="/" style="color:white">
+              <h2>www.satriaharis.com</h2>
+            </router-link>
           </v-layout>
         </v-card>
       </v-card>
@@ -18,7 +20,9 @@
       <v-flex d-flex>
         <v-card color="#2B5899" dark height="440px" max-width="750px">
           <v-layout align-center justify-center fill-height mx-5>
-            <v-card-text class="pr-2"> {{getPageC.content}}
+            <v-card-text class="pr-2">
+              <!-- {{getPageC.content}} -->
+              <div v-html="getPageC.content"></div>
             </v-card-text>
           </v-layout>
           <v-footer dark height="auto" max-width="750px">

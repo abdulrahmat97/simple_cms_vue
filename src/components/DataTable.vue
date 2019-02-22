@@ -41,7 +41,7 @@
 
 <script>
 export default {
-    props:['dialog','title','headers','items','slot-scope'],
+    props:['dialog','title','headers','items'],
     watch:{
         dialog(val) {
             this.$emit('update:dialog',val) 
