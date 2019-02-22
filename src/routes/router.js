@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+<<<<<<< HEAD
 
 import Home from '@/views/user/home.vue'
 import Content from '@/views/user/content.vue'
@@ -10,12 +11,20 @@ import Content_d from '@/views/user/content_d.vue'
 Vue.use(Router)
 
 const router = new Router({
+=======
+// import Home from './views/Home.vue'
+
+Vue.use(Router)
+
+export default new Router({
+>>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
+<<<<<<< HEAD
       component: Home,
     },
     {
@@ -46,10 +55,14 @@ const router = new Router({
       meta: {
         forVisitors: true
       }
+=======
+      // component: Home
+>>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608
     },
     {
       path: '/admin',
       name: 'admin',
+<<<<<<< HEAD
       meta:{
         forAuth:true
       },
@@ -121,3 +134,10 @@ router.beforeEach(
 
 export default router
 
+=======
+      component: () => import('../views/admin/Admin.vue'),
+      // children:
+    }
+  ]
+})
+>>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608
