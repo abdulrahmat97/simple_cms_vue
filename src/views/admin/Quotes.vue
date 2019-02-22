@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
         <v-card m12 md12 lg12 lx12>
             <v-card-title><span class="title font-weight-bold">Quotes</span>
             </v-card-title>
@@ -177,21 +176,9 @@ export default {
 
 
     }
-=======
-    
-</template>
-
-<script>
-export default {
-
->>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608
 }
 </script>
 
 <style>
 
 </style>
-<<<<<<< HEAD
-
-=======
->>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608

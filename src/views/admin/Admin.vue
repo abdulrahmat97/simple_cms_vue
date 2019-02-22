@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <div>   
     <navbar>
         <template slot="content">
@@ -21,23 +20,10 @@
         </template>
     </navbar>
     </div>
-=======
-    <v-content>
-    <navbar></navbar>
-     <v-container fluid fill-height>
-        <v-layout justify-center align-center>
-          <v-flex shrink>
-            <router-view/>
-          </v-flex>
-        </v-layout>
-      </v-container>   
-    </v-content>
->>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue'
-<<<<<<< HEAD
 import axios from 'axios'
 import {API_URL} from '@/common/config'
 
@@ -63,11 +49,6 @@ export default {
             this.$auth.setAuthenticatedUser(response.data)
     })
     }
-=======
-export default {
- components:{
-    Navbar : Navbar
->>>>>>> 5dfa83c56c6350dd19ea3c06cd298a9787170608
   }
 }
 </script>
